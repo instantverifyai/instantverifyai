@@ -83,10 +83,7 @@
     0%   { transform: translateY(0); }
     100% { transform: translateY(60px); }
   }
-  .hero-content {
-    position: relative; z-index: 2;
-    max-width: 760px;
-  }
+  .hero-content { position: relative; z-index: 2; max-width: 760px; }
   .hero-badge {
     display: inline-flex; align-items: center; gap: 8px;
     background: rgba(0,184,148,0.12);
@@ -190,11 +187,7 @@
     color: var(--white);
     margin-bottom: 4px;
   }
-  .pillar-desc {
-    font-size: 0.78rem;
-    color: rgba(255,255,255,0.5);
-    line-height: 1.5;
-  }
+  .pillar-desc { font-size: 0.78rem; color: rgba(255,255,255,0.5); line-height: 1.5; }
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(20px); }
     to   { opacity: 1; transform: translateY(0); }
@@ -265,9 +258,7 @@
     border-radius: 14px;
     overflow: hidden;
   }
-  @media (max-width: 768px) {
-    .contrast-grid { grid-template-columns: 1fr; }
-  }
+  @media (max-width: 768px) { .contrast-grid { grid-template-columns: 1fr; } }
   .contrast-col { padding: 36px 32px; }
   .contrast-old {
     background: var(--lgray);
@@ -504,11 +495,7 @@
     margin-bottom: 6px;
     letter-spacing: -0.02em;
   }
-  .form-sub {
-    font-size: 0.85rem;
-    color: rgba(255,255,255,0.45);
-    margin-bottom: 28px;
-  }
+  .form-sub { font-size: 0.85rem; color: rgba(255,255,255,0.45); margin-bottom: 28px; }
   .form-group { margin-bottom: 16px; }
   .form-group label {
     display: block;
@@ -520,7 +507,8 @@
     margin-bottom: 6px;
   }
   .form-group input,
-  .form-group select {
+  .form-group select,
+  .form-group textarea {
     width: 100%;
     background: rgba(255,255,255,0.06);
     border: 1px solid rgba(255,255,255,0.12);
@@ -532,10 +520,13 @@
     outline: none;
     transition: border-color 0.2s;
     -webkit-appearance: none;
+    resize: vertical;
   }
-  .form-group input::placeholder { color: rgba(255,255,255,0.25); }
+  .form-group input::placeholder,
+  .form-group textarea::placeholder { color: rgba(255,255,255,0.25); }
   .form-group input:focus,
-  .form-group select:focus { border-color: var(--teal); }
+  .form-group select:focus,
+  .form-group textarea:focus { border-color: var(--teal); }
   .form-group select option { background: var(--navy); color: var(--white); }
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
   .form-submit {
@@ -550,13 +541,14 @@
     border-radius: 8px;
     cursor: pointer;
     margin-top: 8px;
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
     box-shadow: 0 4px 20px rgba(0,184,148,0.2);
   }
-  .form-submit:hover {
+  .form-submit:hover:not(:disabled) {
     transform: translateY(-1px);
     box-shadow: 0 8px 28px rgba(0,184,148,0.3);
   }
+  .form-submit:disabled { opacity: 0.6; cursor: not-allowed; }
   .form-note {
     font-size: 0.75rem;
     color: rgba(255,255,255,0.3);
@@ -592,11 +584,7 @@
     color: var(--teal);
     margin-bottom: 8px;
   }
-  .success-body {
-    font-size: 0.88rem;
-    color: rgba(255,255,255,0.5);
-    line-height: 1.6;
-  }
+  .success-body { font-size: 0.88rem; color: rgba(255,255,255,0.5); line-height: 1.6; }
   @media (max-width: 600px) {
     .steps-grid { gap: 32px; }
     .steps-grid::before { display: none; }
@@ -996,6 +984,10 @@
             <option>11+</option>
           </select>
         </div>
+        <div class="form-group">
+          <label>Anything else? (optional)</label>
+          <textarea id="notes" rows="2" placeholder="Current verification process, biggest pain point, etc."></textarea>
+        </div>
         <button class="form-submit" onclick="submitForm()">Reserve My Spot →</button>
         <div class="form-note">No commitment required. We'll talk through your practice and discuss fit before any setup.</div>
       </div>
@@ -1017,31 +1009,59 @@
 </footer>
 
 <script>
-function submitForm() {
-  const fields = ['practice','fname','lname','email','phone','pms','ops'];
-  const vals = {};
-  let valid = true;
+  // ─────────────────────────────────────────────────────────────────────────
+  // Lead capture — posts to Google Apps Script web app, which writes to
+  // the "InstantVerify AI — Waitlist" sheet and emails a notification.
+  //
+  // Using text/plain content-type avoids a CORS preflight; the Apps Script
+  // doPost() handler still parses the body as JSON.
+  // ─────────────────────────────────────────────────────────────────────────
 
-  fields.forEach(id => {
-    const el = document.getElementById(id);
-    if (!el.value) {
-      el.style.borderColor = '#e74c3c';
-      valid = false;
-    } else {
-      el.style.borderColor = '';
-      vals[id] = el.value;
+  const SERVER_URL = "https://script.google.com/macros/s/AKfycbzn1HCyHAgMiUcpidfeC0rutcfD6yElcv3GSUjYFRApqyRkYWBXB3rcwbL_sboxqj8p/exec";
+
+  async function submitForm() {
+    const fields = ['practice','fname','lname','email','phone','pms','ops'];
+    const data = { notes: document.getElementById('notes')?.value?.trim() || "" };
+    let valid = true;
+
+    fields.forEach(id => {
+      const el = document.getElementById(id);
+      if (!el.value.trim()) {
+        el.style.borderColor = '#e74c3c';
+        valid = false;
+      } else {
+        el.style.borderColor = '';
+        data[id] = el.value.trim();
+      }
+    });
+
+    if (!valid) return;
+
+    const btn = document.querySelector('.form-submit');
+    const originalText = btn.textContent;
+    btn.textContent = 'Submitting...';
+    btn.disabled = true;
+
+    try {
+      await fetch(SERVER_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify(data),
+        redirect: 'follow'
+      });
+
+      // Apps Script returns an opaque/redirected response; if fetch didn't
+      // throw, treat it as success. Real failures (network, CORS) hit catch.
+      document.getElementById('form-wrap').style.display = 'none';
+      document.getElementById('success').classList.add('show');
+      document.getElementById('waitlist').scrollIntoView({ behavior: 'smooth' });
+    } catch (err) {
+      console.error('Lead submission error:', err);
+      btn.textContent = originalText;
+      btn.disabled = false;
+      alert('Something went wrong — please try again or email darren@instantverifyai.com directly.');
     }
-  });
-
-  if (!valid) return;
-
-  // TODO: Wire to Formspree or backend endpoint
-  console.log('Waitlist submission:', vals);
-
-  document.getElementById('form-wrap').style.display = 'none';
-  document.getElementById('success').classList.add('show');
-  document.getElementById('waitlist').scrollIntoView({ behavior: 'smooth' });
-}
+  }
 </script>
 </body>
 </html>
