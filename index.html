@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>InstantVerify AI — Insurance Verification, Automated</title>
+<title>InstantVerify AI — Know Every Patient's Benefits Before They Sit Down</title>
+<meta name="description" content="An AI workforce inside your practice software that verifies every patient, every procedure, every tooth — automatically, accurately, and without sending data to the cloud.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 <style>
@@ -18,19 +19,14 @@
     --rule:   #d1dae6;
     --text:   #1a2535;
   }
-
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   html { scroll-behavior: smooth; }
-
   body {
     font-family: 'DM Sans', sans-serif;
     color: var(--text);
     background: var(--white);
     overflow-x: hidden;
   }
-
-  /* ── NAV ─────────────────────────────────────────────── */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     display: flex; align-items: center; justify-content: space-between;
@@ -40,7 +36,6 @@
     backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(255,255,255,0.07);
   }
-
   .nav-logo {
     font-family: 'Syne', sans-serif;
     font-weight: 800;
@@ -49,7 +44,6 @@
     letter-spacing: -0.02em;
   }
   .nav-logo span { color: var(--teal); }
-
   .nav-cta {
     background: var(--teal);
     color: var(--navy);
@@ -62,8 +56,6 @@
     transition: opacity 0.2s;
   }
   .nav-cta:hover { opacity: 0.88; }
-
-  /* ── HERO ────────────────────────────────────────────── */
   .hero {
     min-height: 100vh;
     background: var(--navy);
@@ -72,7 +64,6 @@
     overflow: hidden;
     padding: 100px 5% 80px;
   }
-
   .hero::before {
     content: '';
     position: absolute; inset: 0;
@@ -80,8 +71,6 @@
       radial-gradient(ellipse 80% 60% at 70% 50%, rgba(26,95,173,0.18) 0%, transparent 70%),
       radial-gradient(ellipse 40% 40% at 20% 80%, rgba(0,184,148,0.10) 0%, transparent 60%);
   }
-
-  /* Animated grid */
   .hero-grid {
     position: absolute; inset: 0;
     background-image:
@@ -94,12 +83,10 @@
     0%   { transform: translateY(0); }
     100% { transform: translateY(60px); }
   }
-
   .hero-content {
     position: relative; z-index: 2;
-    max-width: 680px;
+    max-width: 760px;
   }
-
   .hero-badge {
     display: inline-flex; align-items: center; gap: 8px;
     background: rgba(0,184,148,0.12);
@@ -114,7 +101,6 @@
     margin-bottom: 28px;
     animation: fadeUp 0.6s ease both;
   }
-
   .hero-badge::before {
     content: '';
     width: 6px; height: 6px;
@@ -126,37 +112,30 @@
     0%, 100% { opacity: 1; transform: scale(1); }
     50%       { opacity: 0.5; transform: scale(1.4); }
   }
-
   h1 {
     font-family: 'Syne', sans-serif;
     font-weight: 800;
-    font-size: clamp(2.4rem, 5vw, 3.8rem);
-    line-height: 1.08;
+    font-size: clamp(2.4rem, 5.2vw, 4rem);
+    line-height: 1.05;
     letter-spacing: -0.03em;
     color: var(--white);
     margin-bottom: 24px;
     animation: fadeUp 0.6s 0.1s ease both;
   }
-  h1 em {
-    font-style: normal;
-    color: var(--teal);
-  }
-
+  h1 em { font-style: normal; color: var(--teal); }
   .hero-sub {
     font-size: 1.15rem;
     font-weight: 300;
-    color: rgba(255,255,255,0.65);
+    color: rgba(255,255,255,0.7);
     line-height: 1.65;
     margin-bottom: 40px;
-    max-width: 560px;
+    max-width: 620px;
     animation: fadeUp 0.6s 0.2s ease both;
   }
-
   .hero-actions {
     display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
     animation: fadeUp 0.6s 0.3s ease both;
   }
-
   .btn-primary {
     background: var(--teal);
     color: var(--navy);
@@ -174,7 +153,6 @@
     transform: translateY(-2px);
     box-shadow: 0 8px 32px rgba(0,184,148,0.35);
   }
-
   .btn-ghost {
     color: rgba(255,255,255,0.7);
     font-size: 0.9rem;
@@ -184,41 +162,42 @@
   }
   .btn-ghost:hover { color: var(--white); }
   .btn-ghost::after { content: '→'; }
-
-  .hero-stats {
-    display: flex; gap: 40px; margin-top: 60px;
+  .hero-pillars {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 64px;
     padding-top: 40px;
     border-top: 1px solid rgba(255,255,255,0.1);
     animation: fadeUp 0.6s 0.4s ease both;
-    flex-wrap: wrap;
+    max-width: 720px;
   }
-  .stat-item { }
-  .stat-num {
+  @media (max-width: 600px) {
+    .hero-pillars { grid-template-columns: 1fr; gap: 20px; }
+  }
+  .pillar-icon {
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    background: rgba(0,184,148,0.15);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+  }
+  .pillar-title {
     font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 1.8rem;
+    font-weight: 600;
+    font-size: 0.9rem;
     color: var(--white);
-    letter-spacing: -0.02em;
-    line-height: 1;
+    margin-bottom: 4px;
   }
-  .stat-num span { color: var(--teal); }
-  .stat-label {
-    font-size: 0.8rem;
-    color: rgba(255,255,255,0.45);
-    margin-top: 4px;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
+  .pillar-desc {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.5;
   }
-
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(20px); }
     to   { opacity: 1; transform: translateY(0); }
-  }
-
-  /* ── PROBLEM ─────────────────────────────────────────── */
-  .problem {
-    background: var(--lgray);
-    padding: 100px 5%;
   }
   .section-label {
     font-size: 0.75rem;
@@ -242,10 +221,10 @@
     font-weight: 300;
     color: var(--gray);
     line-height: 1.7;
-    max-width: 560px;
+    max-width: 620px;
     margin-bottom: 48px;
   }
-
+  .problem { background: var(--lgray); padding: 100px 5%; }
   .pain-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -266,11 +245,7 @@
     height: 3px;
     background: linear-gradient(90deg, var(--blue), var(--teal));
   }
-  .pain-icon {
-    font-size: 1.8rem;
-    margin-bottom: 14px;
-    display: block;
-  }
+  .pain-icon { font-size: 1.8rem; margin-bottom: 14px; display: block; }
   .pain-title {
     font-family: 'Syne', sans-serif;
     font-weight: 600;
@@ -278,21 +253,77 @@
     color: var(--navy);
     margin-bottom: 8px;
   }
-  .pain-desc {
-    font-size: 0.88rem;
+  .pain-desc { font-size: 0.88rem; color: var(--gray); line-height: 1.6; }
+  .contrast { background: var(--white); padding: 100px 5%; }
+  .contrast-inner { max-width: 1100px; margin: 0 auto; }
+  .contrast-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    margin-top: 56px;
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  @media (max-width: 768px) {
+    .contrast-grid { grid-template-columns: 1fr; }
+  }
+  .contrast-col { padding: 36px 32px; }
+  .contrast-old {
+    background: var(--lgray);
+    border-right: 1px solid var(--rule);
+  }
+  @media (max-width: 768px) {
+    .contrast-old { border-right: none; border-bottom: 1px solid var(--rule); }
+  }
+  .contrast-new { background: var(--navy); color: var(--white); }
+  .contrast-tag {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
     color: var(--gray);
-    line-height: 1.6;
+    margin-bottom: 10px;
   }
-
-  /* ── HOW IT WORKS ────────────────────────────────────── */
-  .how {
-    background: var(--white);
-    padding: 100px 5%;
+  .contrast-new .contrast-tag { color: var(--teal); }
+  .contrast-h {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--navy);
+    margin-bottom: 22px;
+    letter-spacing: -0.01em;
   }
-  .how-inner {
-    max-width: 1100px;
-    margin: 0 auto;
+  .contrast-new .contrast-h { color: var(--white); }
+  .contrast-list { list-style: none; margin: 0; }
+  .contrast-list li {
+    font-size: 0.9rem;
+    line-height: 1.55;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    color: var(--gray);
   }
+  .contrast-new .contrast-list li {
+    color: rgba(255,255,255,0.85);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .contrast-list li:last-child { border-bottom: none; }
+  .contrast-list li::before {
+    content: '—';
+    color: var(--gray);
+    font-weight: 400;
+    flex-shrink: 0;
+  }
+  .contrast-new .contrast-list li::before {
+    content: '✓';
+    color: var(--teal);
+    font-weight: 700;
+  }
+  .how { background: var(--lgray); padding: 100px 5%; }
+  .how-inner { max-width: 1100px; margin: 0 auto; }
   .steps-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -307,11 +338,7 @@
     height: 1px;
     background: linear-gradient(90deg, transparent, var(--rule), var(--rule), transparent);
   }
-  .step-item {
-    text-align: center;
-    padding: 0 20px;
-    position: relative;
-  }
+  .step-item { text-align: center; padding: 0 20px; position: relative; }
   .step-num {
     width: 56px; height: 56px;
     border-radius: 50%;
@@ -323,7 +350,7 @@
     display: flex; align-items: center; justify-content: center;
     margin: 0 auto 20px;
     position: relative; z-index: 2;
-    border: 3px solid var(--white);
+    border: 3px solid var(--lgray);
     box-shadow: 0 0 0 2px var(--navy);
   }
   .step-item:last-child .step-num {
@@ -337,25 +364,9 @@
     color: var(--navy);
     margin-bottom: 8px;
   }
-  .step-desc {
-    font-size: 0.83rem;
-    color: var(--gray);
-    line-height: 1.6;
-  }
-
-  /* ── FEATURES ────────────────────────────────────────── */
-  .features {
-    background: var(--navy);
-    padding: 100px 5%;
-  }
-  .features-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-  .features .section-label { color: var(--teal); }
-  .features .section-title { color: var(--white); }
-  .features .section-body  { color: rgba(255,255,255,0.5); }
-
+  .step-desc { font-size: 0.83rem; color: var(--gray); line-height: 1.6; }
+  .features { background: var(--white); padding: 100px 5%; }
+  .features-inner { max-width: 1100px; margin: 0 auto; }
   .features-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -363,16 +374,13 @@
     margin-top: 48px;
   }
   .feature-card {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.08);
+    background: var(--lgray);
+    border: 1px solid var(--rule);
     border-radius: 12px;
     padding: 28px;
-    transition: border-color 0.2s, background 0.2s;
+    transition: transform 0.2s, border-color 0.2s;
   }
-  .feature-card:hover {
-    border-color: rgba(0,184,148,0.3);
-    background: rgba(0,184,148,0.04);
-  }
+  .feature-card:hover { transform: translateY(-2px); border-color: var(--teal); }
   .feature-icon {
     width: 40px; height: 40px;
     border-radius: 8px;
@@ -385,20 +393,50 @@
     font-family: 'Syne', sans-serif;
     font-weight: 600;
     font-size: 0.95rem;
-    color: var(--white);
+    color: var(--navy);
     margin-bottom: 8px;
   }
-  .feature-desc {
-    font-size: 0.85rem;
-    color: rgba(255,255,255,0.45);
-    line-height: 1.65;
+  .feature-desc { font-size: 0.85rem; color: var(--gray); line-height: 1.65; }
+  .vision { background: var(--navy); padding: 100px 5%; position: relative; overflow: hidden; }
+  .vision::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 60% at 30% 50%, rgba(0,184,148,0.08) 0%, transparent 70%);
   }
-
-  /* ── CONFIDENCE ──────────────────────────────────────── */
-  .confidence {
-    background: var(--lgray);
-    padding: 100px 5%;
+  .vision-inner { max-width: 1100px; margin: 0 auto; position: relative; z-index: 2; }
+  .vision .section-label { color: var(--teal); }
+  .vision .section-title { color: var(--white); }
+  .vision .section-body  { color: rgba(255,255,255,0.55); }
+  .vision-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-top: 48px;
   }
+  .vision-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 28px;
+  }
+  .vision-num {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.78rem;
+    color: var(--teal);
+    letter-spacing: 0.08em;
+    display: block;
+    margin-bottom: 10px;
+  }
+  .vision-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--white);
+    margin-bottom: 10px;
+  }
+  .vision-desc { font-size: 0.88rem; color: rgba(255,255,255,0.55); line-height: 1.65; }
+  .confidence { background: var(--lgray); padding: 100px 5%; }
   .confidence-inner {
     max-width: 1100px;
     margin: 0 auto;
@@ -410,17 +448,8 @@
   @media (max-width: 768px) {
     .confidence-inner { grid-template-columns: 1fr; gap: 40px; }
   }
-  .conf-bars { }
-  .conf-row {
-    display: flex; align-items: center; gap: 16px;
-    margin-bottom: 20px;
-  }
-  .conf-label {
-    font-size: 0.82rem;
-    color: var(--gray);
-    width: 140px;
-    flex-shrink: 0;
-  }
+  .conf-row { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; }
+  .conf-label { font-size: 0.82rem; color: var(--gray); width: 140px; flex-shrink: 0; }
   .conf-track {
     flex: 1;
     height: 8px;
@@ -428,14 +457,8 @@
     border-radius: 100px;
     overflow: hidden;
   }
-  .conf-fill {
-    height: 100%;
-    border-radius: 100px;
-    animation: fillBar 1.2s ease both;
-  }
-  @keyframes fillBar {
-    from { width: 0; }
-  }
+  .conf-fill { height: 100%; border-radius: 100px; animation: fillBar 1.2s ease both; }
+  @keyframes fillBar { from { width: 0; } }
   .conf-pct {
     font-family: 'Syne', sans-serif;
     font-weight: 600;
@@ -444,12 +467,7 @@
     width: 36px;
     text-align: right;
   }
-
-  /* ── PILOT ───────────────────────────────────────────── */
-  .pilot {
-    background: var(--white);
-    padding: 100px 5%;
-  }
+  .pilot { background: var(--white); padding: 100px 5%; }
   .pilot-inner {
     max-width: 1100px;
     margin: 0 auto;
@@ -477,13 +495,7 @@
     margin-top: 2px;
     flex-shrink: 0;
   }
-
-  /* ── FORM ────────────────────────────────────────────── */
-  .waitlist-form {
-    background: var(--navy);
-    border-radius: 16px;
-    padding: 40px;
-  }
+  .waitlist-form { background: var(--navy); border-radius: 16px; padding: 40px; }
   .form-title {
     font-family: 'Syne', sans-serif;
     font-weight: 700;
@@ -497,7 +509,6 @@
     color: rgba(255,255,255,0.45);
     margin-bottom: 28px;
   }
-
   .form-group { margin-bottom: 16px; }
   .form-group label {
     display: block;
@@ -526,13 +537,7 @@
   .form-group input:focus,
   .form-group select:focus { border-color: var(--teal); }
   .form-group select option { background: var(--navy); color: var(--white); }
-
-  .form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-  }
-
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
   .form-submit {
     width: 100%;
     background: var(--teal);
@@ -552,7 +557,6 @@
     transform: translateY(-1px);
     box-shadow: 0 8px 28px rgba(0,184,148,0.3);
   }
-
   .form-note {
     font-size: 0.75rem;
     color: rgba(255,255,255,0.3);
@@ -560,8 +564,6 @@
     margin-top: 12px;
     line-height: 1.5;
   }
-
-  /* ── FOOTER ──────────────────────────────────────────── */
   footer {
     background: var(--navy);
     border-top: 1px solid rgba(255,255,255,0.07);
@@ -579,22 +581,10 @@
     color: var(--white);
   }
   .footer-logo span { color: var(--teal); }
-  .footer-copy {
-    font-size: 0.8rem;
-    color: rgba(255,255,255,0.3);
-  }
-
-  /* ── SUCCESS STATE ───────────────────────────────────── */
-  .success-msg {
-    display: none;
-    text-align: center;
-    padding: 20px 0;
-  }
+  .footer-copy { font-size: 0.8rem; color: rgba(255,255,255,0.3); }
+  .success-msg { display: none; text-align: center; padding: 20px 0; }
   .success-msg.show { display: block; }
-  .success-icon {
-    font-size: 2.5rem;
-    margin-bottom: 12px;
-  }
+  .success-icon { font-size: 2.5rem; margin-bottom: 12px; }
   .success-title {
     font-family: 'Syne', sans-serif;
     font-weight: 700;
@@ -607,10 +597,7 @@
     color: rgba(255,255,255,0.5);
     line-height: 1.6;
   }
-
-  /* ── RESPONSIVE ──────────────────────────────────────── */
   @media (max-width: 600px) {
-    .hero-stats { gap: 24px; }
     .steps-grid { gap: 32px; }
     .steps-grid::before { display: none; }
     .form-row { grid-template-columns: 1fr; }
@@ -620,79 +607,62 @@
 </head>
 <body>
 
-<!-- ── NAV ───────────────────────────────────────────────── -->
 <nav>
   <div class="nav-logo">Instant<span>Verify</span> AI</div>
   <a href="#waitlist" class="nav-cta">Join the Waitlist</a>
 </nav>
 
-<!-- ── HERO ──────────────────────────────────────────────── -->
 <section class="hero">
   <div class="hero-grid"></div>
   <div class="hero-content">
-    <div class="hero-badge">Seed round open · Pilot offices now enrolling</div>
-    <h1>An <em>AI workforce</em><br>inside your practice<br>software</h1>
+    <div class="hero-badge">Pilot offices now enrolling</div>
+    <h1>Every patient.<br>Every procedure.<br><em>Every tooth.</em></h1>
     <p class="hero-sub">
-      Insurance verification is manual, slow, and full of costly mistakes.
-      InstantVerify AI operates inside your practice management software —
-      scraping portals, calling carriers, and delivering verified benefits
-      to your team every morning. Automatically.
+      InstantVerify AI is an intelligent workforce that lives inside your practice software —
+      verifying every patient's benefits before they sit in the chair. Not just whether they're
+      covered. Exactly what every procedure costs, what's already been used, and what's about
+      to expire.
     </p>
     <div class="hero-actions">
       <a href="#waitlist" class="btn-primary">Join the Waitlist</a>
       <a href="#how" class="btn-ghost">See how it works</a>
     </div>
-    <div class="hero-stats">
-      <div class="stat-item">
-        <div class="stat-num">200<span>K</span></div>
-        <div class="stat-label">US dental offices</div>
+
+    <div class="hero-pillars">
+      <div class="pillar-item">
+        <div class="pillar-icon">🧠</div>
+        <div class="pillar-title">Total visibility</div>
+        <div class="pillar-desc">Every benefit, frequency limit, and waiting period — not just coverage status.</div>
       </div>
-      <div class="stat-item">
-        <div class="stat-num">$1<span>B+</span></div>
-        <div class="stat-label">Total addressable market</div>
+      <div class="pillar-item">
+        <div class="pillar-icon">🔒</div>
+        <div class="pillar-title">Stays in your office</div>
+        <div class="pillar-desc">Patient data never leaves your computer. No cloud. No exposure.</div>
       </div>
-      <div class="stat-item">
-        <div class="stat-num">$600</div>
-        <div class="stat-label">Per office / month</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num">$180<span>M</span></div>
-        <div class="stat-label">Projected Yr 5 ARR</div>
+      <div class="pillar-item">
+        <div class="pillar-icon">⚡</div>
+        <div class="pillar-title">Zero clicks</div>
+        <div class="pillar-desc">Runs on its own every morning. Your team walks in to a finished report.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── VIDEO ───────────────────────────────────────────────── -->
 <section style="background:var(--navy);padding:0 5% 80px;">
   <div style="max-width:860px;margin:0 auto;">
-
-    <!-- Section label -->
     <div style="text-align:center;padding-bottom:28px;">
       <span style="font-size:0.75rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--teal);">See it in action</span>
     </div>
-
-    <!-- Video container -->
     <div style="position:relative;border-radius:16px;overflow:hidden;box-shadow:0 24px 80px rgba(0,0,0,0.5);border:1px solid rgba(255,255,255,0.08);">
-      <video
-        id="pitch-video"
-        style="width:100%;display:block;background:#000;"
-        poster=""
-        preload="metadata"
-        controls
-        playsinline>
+      <video id="pitch-video" style="width:100%;display:block;background:#000;" preload="metadata" controls playsinline>
         <source src="instantverify.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
-
-      <!-- Custom play overlay — hides when video starts -->
       <div id="play-overlay"
         onclick="document.getElementById('pitch-video').play();this.style.display='none';"
         style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(13,31,53,0.6);cursor:pointer;transition:background 0.2s;"
         onmouseover="this.style.background='rgba(13,31,53,0.4)';"
         onmouseout="this.style.background='rgba(13,31,53,0.6)';">
-
-        <!-- Play button circle -->
         <div style="width:80px;height:80px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 40px rgba(0,184,148,0.4);margin-bottom:16px;transition:transform 0.2s;"
           onmouseover="this.style.transform='scale(1.08)';"
           onmouseout="this.style.transform='scale(1)';">
@@ -700,150 +670,221 @@
             <path d="M8 5.14v14l11-7-11-7z" fill="#0d1f35"/>
           </svg>
         </div>
-        <div style="font-family:'Syne',sans-serif;font-weight:600;font-size:0.95rem;color:rgba(255,255,255,0.9);">Watch the pitch</div>
+        <div style="font-family:'Syne',sans-serif;font-weight:600;font-size:0.95rem;color:rgba(255,255,255,0.9);">Watch the demo</div>
         <div style="font-size:0.78rem;color:rgba(255,255,255,0.4);margin-top:4px;">2 minutes</div>
       </div>
     </div>
-
   </div>
 </section>
 
 <script>
-  // Hide overlay once video starts playing natively via controls
   document.getElementById('pitch-video').addEventListener('play', function() {
     var overlay = document.getElementById('play-overlay');
     if (overlay) overlay.style.display = 'none';
   });
 </script>
 
-<!-- ── PROBLEM ────────────────────────────────────────────── -->
 <section class="problem">
   <div style="max-width:1100px;margin:0 auto;">
-    <div class="section-label">The problem</div>
-    <h2 class="section-title">Your team deserves better<br>than this workflow</h2>
+    <div class="section-label">The cost of getting it wrong</div>
+    <h2 class="section-title">Verification is broken.<br>Patients pay the price.</h2>
     <p class="section-body">
-      Insurance verification is one of the most time-consuming, error-prone tasks
-      in any dental office. The cost of getting it wrong shows up in surprise bills,
-      unhappy patients, and staff burnout.
+      Insurance verification is one of the most time-consuming, error-prone tasks in a dental
+      practice — and one of the most expensive when it goes wrong. Surprise bills erode trust.
+      Missed waiting periods cost the practice. And every hour staff spend on hold is an hour
+      not spent on patient care.
     </p>
     <div class="pain-grid">
       <div class="pain-card">
         <span class="pain-icon">⏱</span>
         <div class="pain-title">Hours lost every week</div>
-        <div class="pain-desc">Staff spend 30–60 minutes per patient on hold, navigating portals, and manually entering data — time better spent on patient care.</div>
+        <div class="pain-desc">Staff spend 30–60 minutes per patient on hold and navigating portals — time that should be spent caring for patients in front of them.</div>
       </div>
       <div class="pain-card">
         <span class="pain-icon">❌</span>
-        <div class="pain-title">Inaccurate estimates</div>
-        <div class="pain-desc">Missed details like waiting periods, downgrade clauses, and missing tooth provisions lead to billing surprises that damage patient trust.</div>
+        <div class="pain-title">Surprise patient bills</div>
+        <div class="pain-desc">Missed waiting periods, downgrade clauses, and missing tooth provisions become billing surprises that damage trust the practice spent years building.</div>
       </div>
       <div class="pain-card">
-        <span class="pain-icon">😓</span>
-        <div class="pain-title">Staff burnout</div>
-        <div class="pain-desc">Repetitive, manual verification is one of the leading sources of front-desk frustration — and one of the easiest to eliminate.</div>
+        <span class="pain-icon">📉</span>
+        <div class="pain-title">Money left on the table</div>
+        <div class="pain-desc">Patients with expiring annual benefits are rarely flagged in time. Treatment that could be scheduled before December 31 simply isn't.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── HOW IT WORKS ───────────────────────────────────────── -->
+<section class="contrast">
+  <div class="contrast-inner">
+    <div class="section-label">A different category of verification</div>
+    <h2 class="section-title">Most tools confirm coverage.<br>InstantVerify reveals everything.</h2>
+    <p class="section-body">
+      The verification tools dental offices use today were built decades ago for a single
+      question: is the patient covered? They were never designed to tell you what every
+      procedure actually costs. InstantVerify is — and the difference shows up in every
+      conversation with a patient.
+    </p>
+    <div class="contrast-grid">
+      <div class="contrast-col contrast-old">
+        <div class="contrast-tag">Conventional verification</div>
+        <div class="contrast-h">Confirms coverage. That's it.</div>
+        <ul class="contrast-list">
+          <li>Active or inactive status</li>
+          <li>Annual maximum and deductible</li>
+          <li>Generic coverage percentages</li>
+          <li>No frequency history per procedure</li>
+          <li>No tooth-level treatment record</li>
+          <li>No alert when benefits are about to expire</li>
+          <li>Patient data routed through vendor cloud</li>
+        </ul>
+      </div>
+      <div class="contrast-col contrast-new">
+        <div class="contrast-tag">InstantVerify AI</div>
+        <div class="contrast-h">Reveals what every procedure costs.</div>
+        <ul class="contrast-list">
+          <li>Full benefit picture, every tab of the portal</li>
+          <li>Frequency limits per procedure, per tooth</li>
+          <li>Waiting period status for this exact patient</li>
+          <li>Missing tooth and downgrade clauses caught</li>
+          <li>Treatment history visible when planning care</li>
+          <li>Expiring-benefit alerts before patients lose them</li>
+          <li>Runs locally — patient data never leaves your office</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="how" id="how">
   <div class="how-inner">
     <div class="section-label">How it works</div>
     <h2 class="section-title">Set it once.<br>It runs itself.</h2>
     <p class="section-body">
-      InstantVerify AI operates as a silent AI worker inside your practice software.
-      No new logins. No workflow changes. Just results waiting for your team each morning.
+      InstantVerify installs on a single office computer in about ten minutes. From that
+      moment on, it operates as a silent worker — no logins, no dashboards, no workflow
+      changes for your team. Just verified results waiting every morning.
     </p>
     <div class="steps-grid">
       <div class="step-item">
         <div class="step-num">1</div>
         <div class="step-title">Reads your schedule</div>
-        <div class="step-desc">Checks your appointment schedule every hour for upcoming patients with insurance</div>
+        <div class="step-desc">Checks tomorrow's appointments directly from your practice software</div>
       </div>
       <div class="step-item">
         <div class="step-num">2</div>
-        <div class="step-title">Logs into carrier portals</div>
-        <div class="step-desc">Uses your existing provider credentials to access Delta Dental and other carriers</div>
+        <div class="step-title">Logs into carriers</div>
+        <div class="step-desc">Uses your existing provider credentials. Handles two-factor automatically.</div>
       </div>
       <div class="step-item">
         <div class="step-num">3</div>
-        <div class="step-title">Extracts full benefits</div>
-        <div class="step-desc">Pulls maximums, deductibles, coverage percentages, waiting periods, and more</div>
+        <div class="step-title">Reads every tab</div>
+        <div class="step-desc">Pulls the full portal — overview, plan, history, frequency, waiting periods</div>
       </div>
       <div class="step-item">
         <div class="step-num">4</div>
         <div class="step-title">Scores confidence</div>
-        <div class="step-desc">Every field gets a confidence rating — the system never guesses or fabricates data</div>
+        <div class="step-desc">Every field rated. Never guesses. Never fabricates. Always flags uncertainty.</div>
       </div>
       <div class="step-item">
         <div class="step-num">5</div>
-        <div class="step-title">Delivers your report</div>
-        <div class="step-desc">A clear PDF lands on your computer at the time you choose — ready before patients arrive</div>
+        <div class="step-title">Delivers the report</div>
+        <div class="step-desc">A clear PDF on your computer at the time you choose — before patients arrive</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── FEATURES ───────────────────────────────────────────── -->
 <section class="features">
   <div class="features-inner">
-    <div class="section-label">What we verify</div>
-    <h2 class="section-title">Every detail your team<br>needs — automatically</h2>
+    <div class="section-label">What you'll know</div>
+    <h2 class="section-title">The details staff miss.<br>The ones that cost you.</h2>
     <p class="section-body">
-      InstantVerify AI catches the details staff commonly miss — the ones that cause
-      billing disputes and erode patient trust.
+      InstantVerify catches the fields that drive case acceptance and prevent billing
+      disputes — the ones that take staff the longest to find and are the easiest to
+      overlook in a hurry.
     </p>
     <div class="features-grid">
       <div class="feature-card">
         <div class="feature-icon">💰</div>
-        <div class="feature-title">Annual Maximum & Deductible</div>
-        <div class="feature-desc">Individual and family deductibles, how much has been met year-to-date, and the annual maximum benefit.</div>
+        <div class="feature-title">Annual maximum &amp; deductible</div>
+        <div class="feature-desc">Individual and family deductibles, exactly how much has been met year-to-date, and the remaining benefit available.</div>
       </div>
       <div class="feature-card">
         <div class="feature-icon">📊</div>
-        <div class="feature-title">Coverage Percentages</div>
-        <div class="feature-desc">Preventive, basic, and major coverage percentages — exactly what your team needs to build accurate estimates.</div>
+        <div class="feature-title">Coverage by category</div>
+        <div class="feature-desc">Preventive, basic, major, endodontic, periodontic, and orthodontic percentages — everything needed for an accurate estimate.</div>
       </div>
       <div class="feature-card">
         <div class="feature-icon">⏳</div>
-        <div class="feature-title">Waiting Periods</div>
-        <div class="feature-desc">Basic and major service waiting periods that are easy to miss and expensive to overlook.</div>
+        <div class="feature-title">Waiting period status</div>
+        <div class="feature-desc">Not just "is there a waiting period" — how much of it remains for this exact patient on this exact plan.</div>
       </div>
       <div class="feature-card">
         <div class="feature-icon">🦷</div>
-        <div class="feature-title">Missing Tooth Clause</div>
-        <div class="feature-desc">Automatically flags whether teeth missing before coverage started may be excluded from benefits.</div>
+        <div class="feature-title">Missing tooth clauses</div>
+        <div class="feature-desc">Automatically flags whether teeth missing prior to coverage may be excluded — caught before the patient is in the chair.</div>
       </div>
       <div class="feature-card">
         <div class="feature-icon">🔄</div>
-        <div class="feature-title">Downgrade Clause</div>
-        <div class="feature-desc">Identifies if the plan pays for a lower-cost alternative — critical for composite vs amalgam decisions.</div>
+        <div class="feature-title">Downgrade clauses</div>
+        <div class="feature-desc">Identifies when a plan pays for a lower-cost alternative — critical for composite vs. amalgam, posterior vs. anterior decisions.</div>
       </div>
       <div class="feature-card">
         <div class="feature-icon">📅</div>
-        <div class="feature-title">Crown Frequency & Ortho</div>
-        <div class="feature-desc">Crown replacement frequency limits, orthodontic coverage percentage, and lifetime orthodontic maximums.</div>
+        <div class="feature-title">Frequency limits</div>
+        <div class="feature-desc">Crown replacement intervals, exam frequency, prophy limits, ortho lifetime maximums — pulled from real treatment history.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── CONFIDENCE ─────────────────────────────────────────── -->
+<section class="vision">
+  <div class="vision-inner">
+    <div class="section-label">Where this is going</div>
+    <h2 class="section-title">From verification<br>to revenue intelligence.</h2>
+    <p class="section-body">
+      Daily verification is just the start. InstantVerify is the foundation of a complete
+      revenue intelligence layer for your practice — one that doesn't just tell you what's
+      covered, but actively works to make sure no patient ever leaves benefits on the table.
+    </p>
+    <div class="vision-list">
+      <div class="vision-card">
+        <span class="vision-num">01</span>
+        <div class="vision-title">Auto-populated PMS</div>
+        <div class="vision-desc">Verified benefits flow directly into your practice software. No manual data entry. No copy-paste errors. Your team sees the data the moment it's verified.</div>
+      </div>
+      <div class="vision-card">
+        <span class="vision-num">02</span>
+        <div class="vision-title">Tooth-level history</div>
+        <div class="vision-desc">Every procedure on every tooth, with dates, frequency limits, and next-eligible dates. Crown on tooth 14 in 2023? The system knows next eligible is 2028.</div>
+      </div>
+      <div class="vision-card">
+        <span class="vision-num">03</span>
+        <div class="vision-title">Chairside cost estimates</div>
+        <div class="vision-desc">Before treatment is presented, the system already knows — for every proposed procedure on every tooth — exactly what insurance covers and what the patient owes.</div>
+      </div>
+      <div class="vision-card">
+        <span class="vision-num">04</span>
+        <div class="vision-title">Expiring benefits alerts</div>
+        <div class="vision-desc">"This patient has $847 in benefits expiring December 31. Three eligible procedures available." Your front desk knows exactly who to call and when.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="confidence">
   <div class="confidence-inner">
     <div>
       <div class="section-label">Confidence scoring</div>
       <h2 class="section-title">No guesses.<br>Ever.</h2>
       <p class="section-body">
-        Every field in your daily report carries a confidence score.
-        If InstantVerify AI isn't certain, it says so — clearly.
-        No fabricated values. No silent errors. Your team always
-        knows exactly what to trust and what to verify manually.
+        Every field in your daily report carries a confidence score. If InstantVerify isn't
+        certain, it says so — clearly. No fabricated values. No silent errors. Your team
+        always knows exactly what to trust and what to verify by hand.
       </p>
       <ul class="pilot-perks" style="margin-top:0;">
-        <li>High confidence fields are verified and ready to use</li>
-        <li>Low confidence fields are flagged with a clear warning</li>
+        <li>High-confidence fields are verified and ready to use</li>
+        <li>Lower-confidence fields are flagged with a clear warning</li>
         <li>Unverifiable fields are left blank — never guessed</li>
       </ul>
     </div>
@@ -872,39 +913,38 @@
       <div class="conf-row">
         <div class="conf-label">Missing tooth</div>
         <div class="conf-track"><div class="conf-fill" style="width:0%;background:#e5e7eb;"></div></div>
-        <div class="conf-pct" style="color:#9ca3af;font-size:0.7rem;">Check</div>
+        <div class="conf-pct" style="color:#9ca3af;font-size:0.7rem;">Verify</div>
       </div>
       <div style="font-size:0.75rem;color:var(--gray);margin-top:16px;line-height:1.5;">
-        ■ 90–100% verified &nbsp; ■ 70–89% verify recommended &nbsp; — unable to verify
+        High verified &nbsp;·&nbsp; Verify recommended &nbsp;·&nbsp; Unable to verify
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── PILOT + WAITLIST ───────────────────────────────────── -->
 <section class="pilot" id="waitlist">
   <div class="pilot-inner">
     <div>
       <div class="section-label">Pilot program</div>
-      <h2 class="section-title">Be first.<br>Shape the product.</h2>
+      <h2 class="section-title">Be among the<br>first practices.</h2>
       <p class="section-body">
-        We're rolling out to a select group of dental offices before our
-        full launch. Pilot partners get early access, dedicated support,
-        and a direct line to the founders.
+        We're rolling out to a select group of dental offices ahead of our broader launch.
+        Pilot partners get early access, white-glove setup, and a direct line to our founders —
+        and their feedback shapes what we build next.
       </p>
       <ul class="pilot-perks">
         <li>Free access during the pilot period</li>
-        <li>Works with Dentrix 26.x and Open Dental today</li>
-        <li>Delta Dental verification live — more carriers coming</li>
-        <li>Your feedback directly shapes what we build next</li>
-        <li>Founding member pricing locked in at launch</li>
+        <li>White-glove installation — we handle the setup</li>
+        <li>Dedicated support from the founders</li>
+        <li>Founding-member pricing locked in at launch</li>
+        <li>Your input shapes the product roadmap</li>
         <li>No IT overhaul — installs on any office Windows PC</li>
       </ul>
       <div style="margin-top:32px;padding:20px;background:var(--lgray);border-radius:10px;border-left:3px solid var(--teal);">
-        <div style="font-family:'Syne',sans-serif;font-weight:600;font-size:0.9rem;color:var(--navy);margin-bottom:4px;">Currently supporting</div>
+        <div style="font-family:'Syne',sans-serif;font-weight:600;font-size:0.9rem;color:var(--navy);margin-bottom:6px;">Built for your practice</div>
         <div style="font-size:0.85rem;color:var(--gray);line-height:1.6;">
-          ✓ Dentrix 26.x &nbsp;·&nbsp; ✓ Open Dental &nbsp;·&nbsp; ✓ Delta Dental<br>
-          Coming soon: Cigna, MetLife, Aetna, Eaglesoft
+          Works alongside your existing practice management software. No rip-and-replace.
+          No new logins for your team. Installs locally — patient data stays in your office.
         </div>
       </div>
     </div>
@@ -912,7 +952,7 @@
     <div class="waitlist-form">
       <div id="form-wrap">
         <div class="form-title">Join the Waitlist</div>
-        <div class="form-sub">We'll reach out within 24 hours to schedule your setup.</div>
+        <div class="form-sub">We'll reach out within 24 hours to discuss fit and schedule your setup.</div>
         <div class="form-group">
           <label>Practice Name</label>
           <input type="text" id="practice" placeholder="Smile Dental Group" />
@@ -957,68 +997,20 @@
           </select>
         </div>
         <button class="form-submit" onclick="submitForm()">Reserve My Spot →</button>
-        <div class="form-note">No commitment required. We'll contact you to discuss fit before any setup.</div>
+        <div class="form-note">No commitment required. We'll talk through your practice and discuss fit before any setup.</div>
       </div>
       <div class="success-msg" id="success">
         <div class="success-icon">✅</div>
         <div class="success-title">You're on the list!</div>
         <div class="success-body">
           We'll reach out within 24 hours to discuss your practice and schedule your setup.<br><br>
-          — Darren & Brian<br>InstantVerify AI
+          — Darren &amp; Brian<br>InstantVerify AI
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── MOAT ──────────────────────────────────────────────── -->
-<section style="background:var(--white);padding:100px 5%;">
-  <div style="max-width:1100px;margin:0 auto;">
-    <div class="section-label">Competitive advantage</div>
-    <h2 class="section-title">Built different.<br>Stays different.</h2>
-    <p class="section-body">Most dental software requires expensive integrations and API agreements. InstantVerify AI requires neither — it operates inside existing software the same way a staff member would.</p>
-    <div class="pain-grid">
-      <div class="pain-card">
-        <span class="pain-icon">🏰</span>
-        <div class="pain-title">No integrations required</div>
-        <div class="pain-desc">Works inside Dentrix, Open Dental, and other PMS software without API agreements, vendor partnerships, or IT overhaul.</div>
-      </div>
-      <div class="pain-card">
-        <span class="pain-icon">🧠</span>
-        <div class="pain-title">Continuous learning loop</div>
-        <div class="pain-desc">The AI gets smarter with every office it serves. Navigation memory builds across installs — each new office benefits from every previous one.</div>
-      </div>
-      <div class="pain-card">
-        <span class="pain-icon">🔒</span>
-        <div class="pain-title">High switching cost</div>
-        <div class="pain-desc">Once verified benefit history, confidence patterns, and staff workflows are built around InstantVerify AI, replacement becomes operationally costly.</div>
-      </div>
-      <div class="pain-card">
-        <span class="pain-icon">📈</span>
-        <div class="pain-title">Expands beyond dental</div>
-        <div class="pain-desc">The same AI workforce model applies to optometry, chiro, and med spa — 200K dental offices is the beachhead, not the ceiling.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── INVESTOR SOFT CALLOUT ───────────────────────────────── -->
-<section style="background:var(--navy);padding:60px 5%;" id="invest">
-  <div style="max-width:700px;margin:0 auto;text-align:center;">
-    <div style="width:1px;height:40px;background:rgba(255,255,255,0.1);margin:0 auto 32px;"></div>
-    <p style="font-size:0.9rem;color:rgba(255,255,255,0.35);line-height:1.7;margin-bottom:20px;">
-      Interested in investing in InstantVerify AI?
-    </p>
-    <a href="mailto:darren@instantverifyai.com?subject=InstantVerify AI — Investor Inquiry"
-       style="display:inline-block;border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.6);font-family:'DM Sans',sans-serif;font-size:0.85rem;padding:10px 28px;border-radius:6px;text-decoration:none;transition:all 0.2s;"
-       onmouseover="this.style.borderColor='rgba(0,184,148,0.5)';this.style.color='#00b894';"
-       onmouseout="this.style.borderColor='rgba(255,255,255,0.15)';this.style.color='rgba(255,255,255,0.6)';">
-      Reach out →
-    </a>
-  </div>
-</section>
-
-<!-- ── FOOTER ─────────────────────────────────────────────── -->
 <footer>
   <div class="footer-logo">Instant<span>Verify</span> AI</div>
   <div class="footer-copy">© 2026 InstantVerify AI · Colorado Springs, CO · All rights reserved</div>
@@ -1043,14 +1035,11 @@ function submitForm() {
 
   if (!valid) return;
 
-  // In Wix: replace this block with a Wix form submission or email trigger
-  // For now: shows success state and logs to console
+  // TODO: Wire to Formspree or backend endpoint
   console.log('Waitlist submission:', vals);
 
   document.getElementById('form-wrap').style.display = 'none';
   document.getElementById('success').classList.add('show');
-
-  // Scroll to success message
   document.getElementById('waitlist').scrollIntoView({ behavior: 'smooth' });
 }
 </script>
