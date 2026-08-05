@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>InstantVerify AI — Know Every Patient's Benefits Before They Sit Down</title>
-<meta name="description" content="An AI workforce inside your practice software that verifies every patient, every procedure, every tooth — automatically, accurately, and without sending data to the cloud.">
+<title>InstantVerify AI — Dental Eligibility Verification &amp; Full Benefits Breakdown</title>
+<meta name="description" content="InstantVerify AI runs on your practice's own computer and delivers both eligibility verification — confirming a patient is covered — and a full benefits breakdown of what every procedure will cost, before the patient sits down. No patient data leaves your office.">
+<link rel="canonical" href="https://instantverifyai.com/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
   <!-- Google Analytics 4 -->
@@ -14,6 +15,56 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-VBSVJXBGVL');
+</script>
+<!-- Structured data for search & AI engines -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "InstantVerify AI",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Windows",
+  "url": "https://instantverifyai.com",
+  "description": "Dental insurance software that runs on a practice's own computer and delivers both eligibility verification and a full benefits breakdown — what every procedure will cost — before the patient is seen, without sending patient data to the cloud.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD",
+    "description": "Pilot program — free access during the pilot period."
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the difference between eligibility verification and a benefits breakdown?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Eligibility verification confirms whether a patient is covered. A full benefits breakdown shows what every procedure will actually cost — coverage percentages, frequency limits, waiting periods, and remaining maximums. InstantVerify AI does both."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does InstantVerify AI send patient data to the cloud or to AI services?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. InstantVerify AI runs on the practice's own computer. Patient information is processed locally and is never sent to InstantVerify's servers or to any AI provider, and the software uses no machine-learning models in its operation."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which practice management systems does InstantVerify AI work with?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "InstantVerify AI works with Dentrix, Eaglesoft, and Open Dental."
+      }
+    }
+  ]
+}
 </script>
 <style>
   :root {
@@ -595,6 +646,19 @@
     color: var(--white);
   }
   .footer-logo span { color: var(--teal); }
+  .footer-nav {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    flex-wrap: wrap;
+  }
+  .footer-nav a {
+    color: rgba(255,255,255,0.75);
+    font-size: 0.85rem;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-nav a:hover { color: var(--teal); }
   .footer-copy { font-size: 0.8rem; color: rgba(255,255,255,0.3); }
   .success-msg { display: none; text-align: center; padding: 20px 0; }
   .success-msg.show { display: block; }
@@ -622,7 +686,7 @@
 <nav>
   <div class="nav-logo">Instant<span>Verify</span> AI</div>
   <div class="nav-links">
-    <a href="https://instantverify-ai.ghost.io" class="nav-link" target="_blank" rel="noopener">Blog</a>
+    <a href="https://blog.instantverifyai.com" class="nav-link" target="_blank" rel="noopener">Blog</a>
     <a href="#waitlist" class="nav-cta">Join the Waitlist</a>
   </div>
 </nav>
@@ -731,7 +795,7 @@
 
 <section class="contrast">
   <div class="contrast-inner">
-    <div class="section-label">A different category of verification</div>
+    <div class="section-label">Eligibility verification vs. full benefits breakdown</div>
     <h2 class="section-title">Most tools confirm coverage.<br>InstantVerify reveals everything.</h2>
     <p class="section-body">
       The verification tools dental offices use today were built decades ago for a single
@@ -741,7 +805,7 @@
     </p>
     <div class="contrast-grid">
       <div class="contrast-col contrast-old">
-        <div class="contrast-tag">Conventional verification</div>
+        <div class="contrast-tag">Eligibility verification</div>
         <div class="contrast-h">Confirms coverage. That's it.</div>
         <ul class="contrast-list">
           <li>Active or inactive status</li>
@@ -754,7 +818,7 @@
         </ul>
       </div>
       <div class="contrast-col contrast-new">
-        <div class="contrast-tag">InstantVerify AI</div>
+        <div class="contrast-tag">InstantVerify AI — the full benefits breakdown</div>
         <div class="contrast-h">Reveals what every procedure costs.</div>
         <ul class="contrast-list">
           <li>Full benefit picture, every tab of the portal</li>
@@ -788,7 +852,7 @@
       <div class="step-item">
         <div class="step-num">2</div>
         <div class="step-title">Logs into carriers</div>
-        <div class="step-desc">Uses your existing provider credentials. Handles two-factor automatically.</div>
+        <div class="step-desc">Uses your existing provider credentials. When a carrier emails a login code, it's retrieved with secure, read-only Google sign-in.</div>
       </div>
       <div class="step-item">
         <div class="step-num">3</div>
@@ -804,6 +868,12 @@
         <div class="step-num">5</div>
         <div class="step-title">Delivers the report</div>
         <div class="step-desc">A clear PDF on your computer at the time you choose — before patients arrive</div>
+      </div>
+    </div>
+    <div style="margin-top:48px;padding:22px 24px;background:var(--white);border-radius:10px;border-left:3px solid var(--teal);max-width:780px;">
+      <div style="font-family:'Syne',sans-serif;font-weight:600;font-size:0.95rem;color:var(--navy);margin-bottom:8px;">Runs in your office, not in the cloud</div>
+      <div style="font-size:0.9rem;color:var(--gray);line-height:1.65;">
+        InstantVerify installs on your practice's own computer, reads your schedule locally, and logs in to your insurance carrier portals for you. When a carrier emails a one-time login code, InstantVerify connects to your practice's email with secure, read-only Google sign-in to retrieve just that code — your patient data, credentials, and email never leave your building. See our <a href="/privacy-policy/" style="color:var(--blue);font-weight:500;">Privacy Policy</a> for details.
       </div>
     </div>
   </div>
@@ -856,7 +926,7 @@
 <section class="vision">
   <div class="vision-inner">
     <div class="section-label">Where this is going</div>
-    <h2 class="section-title">From verification<br>to revenue intelligence.</h2>
+    <h2 class="section-title">From benefits breakdown<br>to revenue intelligence.</h2>
     <p class="section-body">
       Daily verification is just the start. InstantVerify is the foundation of a complete
       revenue intelligence layer for your practice — one that doesn't just tell you what's
@@ -1032,6 +1102,11 @@
 
 <footer>
   <div class="footer-logo">Instant<span>Verify</span> AI</div>
+  <nav class="footer-nav">
+    <a href="/privacy-policy/">Privacy Policy</a>
+    <a href="/patient-data/">How We Handle Patient Data</a>
+    <a href="https://blog.instantverifyai.com" target="_blank" rel="noopener">Blog</a>
+  </nav>
   <div class="footer-copy">© 2026 InstantVerify AI · Colorado Springs, CO · All rights reserved</div>
 </footer>
 
