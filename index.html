@@ -462,15 +462,25 @@
     { price: 300, seats: 50 }   // <-- adjust founding steps as you decide
   ];
   const REGULAR_PRICE = 400;    // <-- the full/contrast price
-  const COUNTER_ENDPOINT = "";  // <-- your real count endpoint
+  const COUNTER_ENDPOINT = "https://script.google.com/macros/s/AKfycbx7G60H2TFeD1DI0EmEpvNClP2K6-Xspxb4_hbnjujNPAz0R0nfnBjWOVAdz0r4JeLwUQ/exec";
 
-  async function getSold() {
-    if (!COUNTER_ENDPOINT) return 0;
-    try {
-      const r = await fetch(COUNTER_ENDPOINT, { cache: "no-store" });
-      const j = await r.json();
-      return Math.max(0, parseInt(j.sold, 10) || 0);
-    } catch (e) { return 0; }
+  // Apps Script web apps don't reliably send CORS headers, so we load the
+  // count via JSONP (a <script> callback) rather than fetch(). The counter
+  // script returns wrapped output when called with ?callback=.
+  let _cbSeq = 0;
+  function getSold() {
+    return new Promise((resolve) => {
+      if (!COUNTER_ENDPOINT) { resolve(0); return; }
+      const cb = 'ivCount' + (++_cbSeq);
+      const s = document.createElement('script');
+      let done = false;
+      const cleanup = () => { try { delete window[cb]; } catch (e) { window[cb] = undefined; } if (s.parentNode) s.parentNode.removeChild(s); };
+      window[cb] = (data) => { done = true; resolve(Math.max(0, parseInt(data && data.sold, 10) || 0)); cleanup(); };
+      s.onerror = () => { if (!done) { resolve(0); cleanup(); } };
+      s.src = COUNTER_ENDPOINT + (COUNTER_ENDPOINT.indexOf('?') === -1 ? '?' : '&') + 'callback=' + cb;
+      document.body.appendChild(s);
+      setTimeout(() => { if (!done) { resolve(0); cleanup(); } }, 8000);
+    });
   }
 
   function renderPricing(sold) {
