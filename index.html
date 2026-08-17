@@ -25,7 +25,7 @@
   "@context":"https://schema.org","@type":"SoftwareApplication","name":"InstantVerify AI",
   "applicationCategory":"BusinessApplication","operatingSystem":"Windows","url":"https://instantverifyai.com",
   "description":"Dental insurance software that runs on a practice's own computer and delivers a full benefits breakdown — what every procedure will cost, read from all benefit tabs of the carrier portal — before the patient is seen, without sending patient data to the cloud.",
-  "offers":{"@type":"Offer","priceCurrency":"USD","price":"200","description":"Founding pricing from $200/mo, locked for life. Month-to-month, no contract."}
+  "offers":{"@type":"Offer","priceCurrency":"USD","price":"250","description":"Founders special $250/mo, locked for life while spots remain. Regular price $500/mo. Month-to-month, no contract."}
 }
 </script>
 <script type="application/ld+json">
@@ -228,7 +228,7 @@
       <a href="#start" class="btn btn-primary">Claim your founding spot</a>
       <a href="#report" class="btn btn-ghost">See a real report</a>
     </div>
-    <div class="hero-counter" id="heroCounter">Founding pricing — locking $200/mo for life for the first 50 offices.</div>
+    <div class="hero-counter" id="heroCounter">Founders special — $250/mo locked for life while spots remain.</div>
   </div>
 </header>
 
@@ -368,15 +368,15 @@
   <div class="wrap">
     <div class="eyebrow">Founding pricing</div>
     <h2 class="sec">Lock your price for life.</h2>
-    <p class="lead">The first 50 offices pay $200/mo — forever. When those seats are gone, the price goes up, and it never comes back down. Month-to-month, no contract, cancel anytime.</p>
+    <p class="lead">Founding offices pay $250/mo — forever, instead of the regular $500/mo. When the remaining spots are gone, the price goes up, and it never comes back down. Month-to-month, no contract, cancel anytime.</p>
 
     <div class="counter-box">
       <div class="price-today">
-        <span class="pt-num" id="ptNum">$200</span><span class="pt-per">/mo</span>
-        <span class="pt-tag">Founding rate · locked for life</span>
+        <span class="pt-num" id="ptNum">$250</span><span class="pt-per">/mo</span>
+        <span class="pt-tag">Founders special · locked for life</span>
       </div>
-      <div class="price-full">Regular price <s id="pfNum">$400/mo</s> once founding spots are gone.</div>
-      <div class="counter-line"><span class="c-dot"></span> <b id="cNum">50</b> <span id="cWord">spots</span> left at this rate <span class="c-live">updating live</span></div>
+      <div class="price-full">Regular price <s id="pfNum">$500/mo</s> once the remaining spots are gone.</div>
+      <div class="counter-line"><span class="c-dot"></span> <b id="cNum">&mdash;</b> <span id="cWord">spots</span> remaining at this rate <span class="c-live">updating live</span></div>
       <div class="lock-note">Month-to-month, no contract, cancel anytime. Your founding rate <b>never goes up</b>.</div>
     </div>
 
@@ -464,11 +464,9 @@
         "" for the launch state (0 sold). NEVER fake this number.
      ============================================================ */
   const TIERS = [
-    { price: 200, seats: 50 },
-    { price: 250, seats: 50 },
-    { price: 300, seats: 50 }   // <-- adjust founding steps as you decide
+    { price: 250, seats: 50 }   // <-- single founding tier; no ladder shown
   ];
-  const REGULAR_PRICE = 400;    // <-- the full/contrast price
+  const REGULAR_PRICE = 500;    // <-- the full/contrast price
   const COUNTER_ENDPOINT = "https://script.google.com/macros/s/AKfycbx7G60H2TFeD1DI0EmEpvNClP2K6-Xspxb4_hbnjujNPAz0R0nfnBjWOVAdz0r4JeLwUQ/exec";
 
   // Apps Script web apps don't reliably send CORS headers, so we load the
@@ -500,10 +498,10 @@
     if (idx >= TIERS.length) {
       document.getElementById('ptNum').textContent = '$' + REGULAR_PRICE;
       document.querySelector('.pt-tag').textContent = 'Regular pricing';
-      document.querySelector('.price-full').textContent = 'Founding pricing has closed.';
+      document.querySelector('.price-full').textContent = 'The founders special has closed.';
       document.getElementById('cNum').textContent = '0';
       document.getElementById('cWord').textContent = 'spots';
-      document.getElementById('heroCounter').innerHTML = 'Founding pricing has closed — now $' + REGULAR_PRICE + '/mo.';
+      document.getElementById('heroCounter').innerHTML = 'The founders special has closed — now $' + REGULAR_PRICE + '/mo.';
       return;
     }
     const cur = TIERS[idx];
@@ -513,7 +511,7 @@
     document.getElementById('cNum').textContent = left;
     document.getElementById('cWord').textContent = (left === 1 ? 'spot' : 'spots');
     document.getElementById('heroCounter').innerHTML =
-      `Founding pricing — <b>${left}</b> ${left === 1 ? 'spot' : 'spots'} left at $${cur.price}/mo, locked for life.`;
+      `Founders special — <b>${left}</b> ${left === 1 ? 'spot' : 'spots'} remaining at $${cur.price}/mo, locked for life.`;
   }
 
   function refreshCount(){ getSold().then(renderPricing); }
